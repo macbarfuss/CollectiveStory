@@ -15,28 +15,39 @@ package de.macbarfuss.collectivestory.shared;
  * <p>
  * When creating a class that is used on both the client and the server, be sure
  * that all code is translatable and does not use native JavaScript. Code that
- * is not translatable (such as code that interacts with a database or the file
+ * is note translatable (such as code that interacts with a database or the file
  * system) cannot be compiled into client side JavaScript. Code that uses native
  * JavaScript (such as Widgets) cannot be run on the server.
  * </p>
  */
-public class FieldVerifier {
+public final class FieldVerifier {
+
+    /**
+     * Minimum length constant for names.
+     */
+    private static final int NAME_MIN_LENGTH = 3;
+
+    /**
+     * Hidden constructor.
+     */
+    private FieldVerifier() { }
 
     /**
      * Verifies that the specified name is valid for our service.
-     * 
+     *
      * In this example, we only require that the name is at least four
-     * characters. In your application, you can use more complex checks to ensure
-     * that usernames, passwords, email addresses, URLs, and other fields have the
-     * proper syntax.
-     * 
-     * @param name the name to validate
+     * characters. In your application, you can use more complex checks to
+     * ensure that usernames, passwords, email addresses, URLs, and other fields
+     * have the proper syntax.
+     *
+     * @param name
+     *            the name to validate
      * @return true if valid, false if invalid
      */
-    public static boolean isValidName(String name) {
+    public static boolean isValidName(final String name) {
         if (name == null) {
             return false;
         }
-        return name.length() > 3;
+        return name.length() > NAME_MIN_LENGTH;
     }
 }
