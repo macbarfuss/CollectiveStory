@@ -1,27 +1,22 @@
 package de.macbarfuss.collectivestory.client;
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.Widget;
 
-public final class WelcomeMask extends AbstractMask {
+public final class WelcomeMask extends Composite {
 
-    private Panel contentPanel;
+	interface MyUiBinder extends UiBinder<Widget, WelcomeMask> { }
+
+	private static MyUiBinder binder = GWT.create(MyUiBinder.class);
+
+	@UiField Label sessionID;
 
     public WelcomeMask() {
-    }
-
-    @Override
-    protected void buildUI() {
-        contentPanel = new FlowPanel();
-        contentPanel.add(new HTMLPanel("<h1>Welcome</h1>"));
-        contentPanel.add(new Label("SessionID"));
-        contentPanel.add(new Label(Display.getInstance().getSessionInfo().getSessionID()));
-    }
-
-    @Override
-    public Panel getContentPanel() {
-        return contentPanel;
+		initWidget(binder.createAndBindUi(this));
+		sessionID.setText(Display.getInstance().getSessionInfo().getSessionID());
     }
 }

@@ -1,25 +1,17 @@
 package de.macbarfuss.collectivestory.client;
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Widget;
 
-public final class AdminMask extends AbstractMask {
+public final class AdminMask extends Composite {
 
-    private Panel contentPanel;
+	interface MyUiBinder extends UiBinder<Widget, AdminMask> { }
 
-    public AdminMask() { }
+	private static MyUiBinder binder = GWT.create(MyUiBinder.class);
 
-    @Override
-    protected void buildUI() {
-        contentPanel = new FlowPanel();
-        contentPanel.add(new HTMLPanel("<h1>Administration</h1>"));
-        contentPanel.add(new Label("Users:"));
-    }
-
-    @Override
-    public Panel getContentPanel() {
-        return contentPanel;
+    public AdminMask() {
+		initWidget(binder.createAndBindUi(this));
     }
 }

@@ -1,25 +1,17 @@
 package de.macbarfuss.collectivestory.client;
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Widget;
 
-public final class ProjectsMask extends AbstractMask {
+public final class ProjectsMask extends Composite {
 
-    private Panel contentPanel;
+	interface MyUiBinder extends UiBinder<Widget, ProjectsMask> { }
 
-    public ProjectsMask() { }
+	private static MyUiBinder binder = GWT.create(MyUiBinder.class);
 
-    @Override
-    protected void buildUI() {
-        contentPanel = new FlowPanel();
-        contentPanel.add(new HTMLPanel("<h1>Project List</h1>"));
-        contentPanel.add(new Label("Here they are:"));
-    }
-
-    @Override
-    public Panel getContentPanel() {
-        return contentPanel;
+    public ProjectsMask() {
+		initWidget(binder.createAndBindUi(this));
     }
 }

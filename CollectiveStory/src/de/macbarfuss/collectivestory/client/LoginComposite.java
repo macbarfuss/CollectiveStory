@@ -35,7 +35,7 @@ public class LoginComposite extends Composite {
     @UiField TextBox usernameBox;
     @UiField PasswordTextBox passphraseBox;
 
-	public LoginComposite(String... names) {
+	public LoginComposite() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
@@ -71,8 +71,7 @@ public class LoginComposite extends Composite {
                         RootPanel.get().clear();
                         final Display display = Display.getInstance();
                         display.setSessionInfo(result);
-                        display.prepareButtonBar();
-                        display.showHome();
+                        display.show(new WelcomeMask());
                     }
                 }
             }

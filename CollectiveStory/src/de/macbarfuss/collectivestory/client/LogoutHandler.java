@@ -43,6 +43,7 @@ public final class LogoutHandler implements ClickHandler {
                         Display.getInstance().setSessionInfo(null);
                         Cookies.removeCookie("sid");
                         RootPanel.get().clear();
+                        Display.markOnLoginPage();
                         new LoginPage().onModuleLoad();
                     }
                 }

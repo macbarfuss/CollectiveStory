@@ -39,8 +39,7 @@ public final class LoginPage implements EntryPoint {
                         final UserSessionInfo userInfo = new UserSessionInfo(sessionID);
                         final Display display = Display.getInstance();
                         display.setSessionInfo(userInfo);
-                        display.prepareButtonBar();
-                        display.showHome();
+                        display.show(new WelcomeMask());
                     } else {
                         buildUI();
                     }
