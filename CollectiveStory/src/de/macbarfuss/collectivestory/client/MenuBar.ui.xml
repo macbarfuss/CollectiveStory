@@ -1,0 +1,16 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:DockLayoutPanel height="50px">
+		<g:west size="100">
+			<g:Button ui:field="homeBtn">Home</g:Button>
+		</g:west>
+		<g:west size="100">
+			<g:Button ui:field="listProjectsBtn">Projects</g:Button>
+		</g:west>
+		<g:west size="100">
+			<g:Button ui:field="adminBtn">Administration</g:Button>
+		</g:west>
+		<g:east size="100">
+			<g:Button ui:field="logoutBtn">Logout</g:Button>
+		</g:east>
+	</g:DockLayoutPanel>
+</ui:UiBinder>
