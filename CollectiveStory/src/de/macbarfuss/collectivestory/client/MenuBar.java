@@ -9,39 +9,44 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MenuBar extends Composite {
+public final class MenuBar extends Composite {
 
-	interface MyUiBinder extends UiBinder<Widget, MenuBar> { }
+    interface MyUiBinder extends UiBinder<Widget, MenuBar> {
+    }
 
-	private static MyUiBinder binder = GWT.create(MyUiBinder.class);
+    private static MyUiBinder binder = GWT.create(MyUiBinder.class);
 
-	@UiField Button adminBtn;
-	@UiField Button homeBtn;
-	@UiField Button listProjectsBtn;
-	@UiField Button logoutBtn;
+    @UiField
+    Button adminBtn;
+    @UiField
+    Button homeBtn;
+    @UiField
+    Button listProjectsBtn;
+    @UiField
+    Button logoutBtn;
 
-	public MenuBar() {
-		initWidget(binder.createAndBindUi(this));
-	}
+    public MenuBar() {
+        initWidget(binder.createAndBindUi(this));
+    }
 
-	@UiHandler("adminBtn")
-	void showAdmin(ClickEvent e) {
-		Display.getInstance().show(new AdminMask());
-	}
+    @UiHandler("adminBtn")
+    void showAdmin(final ClickEvent e) {
+        Display.getInstance().show(new AdminMask());
+    }
 
     @UiHandler("homeBtn")
-    void showHomeMask(ClickEvent e) {
-    	Display.getInstance().show(new WelcomeMask());
+    void showHomeMask(final ClickEvent e) {
+        Display.getInstance().show(new WelcomeMask());
     }
 
     @UiHandler("listProjectsBtn")
-    void showProjects(ClickEvent e) {
-    	Display.getInstance().show(new ProjectsMask());
+    void showProjects(final ClickEvent e) {
+        Display.getInstance().show(new ProjectsMask());
     }
 
-	@UiHandler("logoutBtn")
-	void fireLogoutHandler(ClickEvent e) {
-		LogoutHandler lh = new LogoutHandler();
-		lh.onClick(e);
-	}
+    @UiHandler("logoutBtn")
+    void fireLogoutHandler(final ClickEvent e) {
+        final LogoutHandler lh = new LogoutHandler();
+        lh.onClick(e);
+    }
 }

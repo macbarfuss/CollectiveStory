@@ -7,16 +7,22 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.macbarfuss.collectivestory.shared.UserSessionInfo;
+
 public final class WelcomeMask extends Composite {
 
-	interface MyUiBinder extends UiBinder<Widget, WelcomeMask> { }
+    interface MyUiBinder extends UiBinder<Widget, WelcomeMask> {
+    }
 
-	private static MyUiBinder binder = GWT.create(MyUiBinder.class);
+    private static MyUiBinder binder = GWT.create(MyUiBinder.class);
 
-	@UiField Label sessionID;
+    @UiField
+    Label sessionID;
 
     public WelcomeMask() {
-		initWidget(binder.createAndBindUi(this));
-		sessionID.setText(Display.getInstance().getSessionInfo().getSessionID());
+        final Display display = Display.getInstance();
+        initWidget(binder.createAndBindUi(this));
+        final UserSessionInfo usi = display.getSessionInfo();
+        sessionID.setText(usi.getSessionID());
     }
 }

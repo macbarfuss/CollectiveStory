@@ -15,11 +15,12 @@ public final class LoginData implements Serializable {
      * The passphrase of the user in plain text.
      */
     private String passphrase;
-    
+
     private String username;
 
-    public LoginData() { }
-    
+    public LoginData() {
+    }
+
     public String getPassphrase() {
         return passphrase;
     }
@@ -27,7 +28,7 @@ public final class LoginData implements Serializable {
     public String getUsername() {
         return username;
     }
-    
+
     public void setPassphrase(final String newPassphrase) {
         passphrase = newPassphrase;
     }

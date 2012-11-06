@@ -3,8 +3,8 @@ package de.macbarfuss.collectivestory.shared;
 import java.io.Serializable;
 
 /**
- * This object holds information about the current session with a user.
- * It includes the session id.
+ * This object holds information about the current session with a user. It
+ * includes the session id.
  *
  * @author MacBarfuss
  */
@@ -19,27 +19,27 @@ public final class UserSessionInfo implements Serializable {
     private String sessionID;
     private String username;
 
-
-// C O N S T R U C T O R S
+    // C O N S T R U C T O R S
     /**
      * Return a new object with information about the current session. This
      * constructor can only be invoked on the server.
      *
-     * @param newSessionID String
+     * @param newSessionID
+     *            String
      */
     public UserSessionInfo(final String newSessionID) {
-//        assert !GWT.isClient();
+        // assert !GWT.isClient();
         setSessionID(newSessionID);
         markActive();
     }
 
-	public UserSessionInfo() {	}
+    public UserSessionInfo() {
+    }
 
-
-// G E T T E R S
+    // G E T T E R S
 
     public long getLastActionDate() {
-    	return lastActionDate;
+        return lastActionDate;
     }
 
     public String getSessionID() {
@@ -54,8 +54,7 @@ public final class UserSessionInfo implements Serializable {
         return sessionID != null && !"".equals(sessionID);
     }
 
-
-// S E T T E R S
+    // S E T T E R S
     public void markActive() {
         lastActionDate = System.currentTimeMillis();
     }

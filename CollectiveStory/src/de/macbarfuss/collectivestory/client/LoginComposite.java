@@ -11,39 +11,41 @@ import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.macbarfuss.collectivestory.shared.LoginData;
 import de.macbarfuss.collectivestory.shared.UserSessionInfo;
 
-public class LoginComposite extends Composite {
+public final class LoginComposite extends Composite {
 
     private static final String SID = "sid";
 
     // 2 weeks
     private static final long DURATION = 1000 * 60 * 60 * 24 * 14;
 
-	interface MyUiBinder extends UiBinder<Widget, LoginComposite> {
-	}
+    interface MyUiBinder extends UiBinder<Widget, LoginComposite> {
+    }
 
-	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
+    private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
     @UiField Button btnLogin;
-    @UiField TextBox usernameBox;
+    @UiField Label message;
     @UiField PasswordTextBox passphraseBox;
+    @UiField TextBox usernameBox;
 
-	public LoginComposite() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
-	
-	@UiHandler("btnLogin")
-	void handleClick(ClickEvent e) {
+    public LoginComposite() {
+        initWidget(uiBinder.createAndBindUi(this));
+    }
+
+    @UiHandler("btnLogin")
+    void handleClick(final ClickEvent e) {
+        message.setText("");
         showProcessing(true);
         sendLoginToServer();
-	}
+    }
 
     private void showProcessing(final boolean state) {
         btnLogin.setEnabled(!state);
@@ -53,28 +55,31 @@ public class LoginComposite extends Composite {
         final LoginData data = new LoginData();
         data.setUsername(usernameBox.getText());
         data.setPassphrase(passphraseBox.getText());
-        LoginService.Util.getInstance().startSession(data,
-            new AsyncCallback<UserSessionInfo>() {
+        LoginService.Util.getInstance().startSession(data, new StartSessionCallback());
+    }
 
-                @Override
-                public void onFailure(final Throwable caught) {
-                    showProcessing(false);
-                    // TODO show general error message on screen.
-                }
+    private final class StartSessionCallback implements AsyncCallback<UserSessionInfo> {
 
-                @Override
-                public void onSuccess(final UserSessionInfo result) {
-                    showProcessing(false);
-                    if (result.hasSessionID()) {
-                        final Date expires = new Date(System.currentTimeMillis() + DURATION);
-                        Cookies.setCookie(SID, result.getSessionID(), expires);
-                        RootPanel.get().clear();
-                        final Display display = Display.getInstance();
-                        display.setSessionInfo(result);
-                        display.show(new WelcomeMask());
-                    }
-                }
+        public StartSessionCallback() {
+        }
+
+        @Override
+        public void onFailure(final Throwable caught) {
+            showProcessing(false);
+            message.setText(caught.getMessage());
+        }
+
+        @Override
+        public void onSuccess(final UserSessionInfo result) {
+            showProcessing(false);
+            if (result != null && result.hasSessionID()) {
+                final Date expires = new Date(System.currentTimeMillis() + DURATION);
+                Cookies.setCookie(SID, result.getSessionID(), expires);
+                Display.init(result);
+            } else {
+                message.setText("Username and/or password are not valid.");
             }
-        );
+            // TODO else show error
+        }
     }
 }

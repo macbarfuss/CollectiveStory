@@ -3,6 +3,9 @@
 	<g:HTMLPanel>
 		<table>
 			<tr>
+				<td colspan="2"><g:Label ui:field="message"></g:Label></td>
+			</tr>
+			<tr>
 				<td>
 					<g:Label>Name</g:Label>
 				</td>

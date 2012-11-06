@@ -35,11 +35,8 @@ public final class LoginPage implements EntryPoint {
                 @Override
                 public void onSuccess(final Boolean sidIsValid) {
                     if (sidIsValid) {
-                        RootPanel.get().clear();
-                        final UserSessionInfo userInfo = new UserSessionInfo(sessionID);
-                        final Display display = Display.getInstance();
-                        display.setSessionInfo(userInfo);
-                        display.show(new WelcomeMask());
+                        final UserSessionInfo sessionInfo = new UserSessionInfo(sessionID);
+                        Display.init(sessionInfo);
                     } else {
                         buildUI();
                     }
