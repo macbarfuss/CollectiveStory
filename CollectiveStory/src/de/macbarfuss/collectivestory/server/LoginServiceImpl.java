@@ -4,7 +4,7 @@ import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import de.macbarfuss.collectivestory.client.LoginService;
+import de.macbarfuss.collectivestory.client.login.LoginService;
 import de.macbarfuss.collectivestory.server.util.BCrypt;
 import de.macbarfuss.collectivestory.shared.LoginData;
 import de.macbarfuss.collectivestory.shared.UserSessionInfo;

@@ -9,12 +9,10 @@ import com.mongodb.MongoException;
 
 public final class PersistenceManager {
 
-    private PersistenceManager() {
-    }
+    private static final Datastore DATASTORE =
+            new Morphia().createDatastore(getMongo(), "collectivestory");
 
-    public static Datastore getDatastore() {
-        return new Morphia().createDatastore(getMongo(), "collectivestory");
-    }
+    private PersistenceManager() { }
 
     private static Mongo getMongo() {
         Mongo m = null;
@@ -26,5 +24,9 @@ public final class PersistenceManager {
             e.printStackTrace();
         }
         return m;
+    }
+
+    public static Datastore getDatastore() {
+        return DATASTORE;
     }
 }

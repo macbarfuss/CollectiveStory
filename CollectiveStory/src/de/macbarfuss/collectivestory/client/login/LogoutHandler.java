@@ -1,4 +1,4 @@
-package de.macbarfuss.collectivestory.client;
+package de.macbarfuss.collectivestory.client.login;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -7,6 +7,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
+import de.macbarfuss.collectivestory.client.Display;
 import de.macbarfuss.collectivestory.shared.UserSessionInfo;
 
 public final class LogoutHandler implements ClickHandler {

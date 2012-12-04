@@ -1,7 +1,5 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<g:FlowPanel>
-		<g:HTMLPanel><h1>Welcome</h1></g:HTMLPanel>
-		<g:Label>SessionID</g:Label>
-		<g:Label ui:field="sessionID"></g:Label>
+	<g:FlowPanel height="50px">
+		<g:Label ui:field="messageLabel"></g:Label>
 	</g:FlowPanel>
 </ui:UiBinder>

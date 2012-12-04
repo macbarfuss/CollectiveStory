@@ -1,18 +1,18 @@
-package de.macbarfuss.collectivestory.client;
+package de.macbarfuss.collectivestory.client.welcome;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public final class ProjectsMask extends Composite {
+public final class WelcomeMask extends Composite {
 
-    interface MyUiBinder extends UiBinder<Widget, ProjectsMask> {
+    interface MyUiBinder extends UiBinder<Widget, WelcomeMask> {
     }
 
     private static MyUiBinder binder = GWT.create(MyUiBinder.class);
 
-    public ProjectsMask() {
+    public WelcomeMask() {
         initWidget(binder.createAndBindUi(this));
     }
 }

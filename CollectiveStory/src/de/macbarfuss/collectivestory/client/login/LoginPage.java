@@ -1,10 +1,11 @@
-package de.macbarfuss.collectivestory.client;
+package de.macbarfuss.collectivestory.client.login;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 
+import de.macbarfuss.collectivestory.client.Display;
 import de.macbarfuss.collectivestory.shared.UserSessionInfo;
 
 public final class LoginPage implements EntryPoint {

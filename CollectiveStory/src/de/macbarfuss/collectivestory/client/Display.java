@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.macbarfuss.collectivestory.client.welcome.WelcomeMask;
 import de.macbarfuss.collectivestory.shared.UserSessionInfo;
 
 public final class Display {

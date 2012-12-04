@@ -1,4 +1,4 @@
-package de.macbarfuss.collectivestory.client;
+package de.macbarfuss.collectivestory.client.login;
 
 import java.util.Date;
 
@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.macbarfuss.collectivestory.client.Display;
 import de.macbarfuss.collectivestory.shared.LoginData;
 import de.macbarfuss.collectivestory.shared.UserSessionInfo;
 

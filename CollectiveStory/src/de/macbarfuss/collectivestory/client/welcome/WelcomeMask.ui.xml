@@ -1,0 +1,19 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:FlowPanel>
+		<g:HTMLPanel><h1>Welcome</h1></g:HTMLPanel>
+		<g:VerticalPanel>
+			<g:HTMLPanel><h2>Thats new in your projects</h2></g:HTMLPanel>
+			<g:Label>X, 6 Firun 31 - 9:25: Alrik visits the market to get a new weapon.</g:Label>
+			<g:Label>X: 6 Firun 31 - 7:05: Görg packs his bags to leave the town towards the nearby mountains.</g:Label>
+			<g:HTMLPanel><h2>ToDo</h2></g:HTMLPanel>
+			<g:Label>There are 2 items to be rated.</g:Label>
+			<g:Label>You have to write at least 2748 bytes in Projekt X in the next 5 days.</g:Label>
+			<g:Label>There are unread messages in your inbox.</g:Label>
+			<g:Label>There is a new location description to be approved for your Projekt XYZ.</g:Label>
+			<g:HTMLPanel><h2>Your Stats</h2></g:HTMLPanel>
+			<g:Label>Before this round you had 1234 Points.</g:Label>
+			<g:Label>You have a potential gain this round of 317 Points.</g:Label>
+			<g:Label>Actually you will not receive an points. You have to rate other snippets.</g:Label>
+		</g:VerticalPanel>
+	</g:FlowPanel>
+</ui:UiBinder>

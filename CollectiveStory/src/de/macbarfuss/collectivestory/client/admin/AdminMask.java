@@ -1,6 +1,5 @@
-package de.macbarfuss.collectivestory.client;
+package de.macbarfuss.collectivestory.client.admin;
 
-import java.awt.Checkbox;
 import java.util.Set;
 
 import com.google.gwt.core.client.GWT;
@@ -10,13 +9,15 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.macbarfuss.collectivestory.client.admin.AdminService;
+import de.macbarfuss.collectivestory.client.Display;
+import de.macbarfuss.collectivestory.client.MessageType;
 
 public final class AdminMask extends Composite {
 
@@ -26,7 +27,7 @@ public final class AdminMask extends Composite {
     private static MyUiBinder binder = GWT.create(MyUiBinder.class);
 
     @UiField Button newUserButton;
-    @UiField Checkbox isAdmin;
+    @UiField CheckBox isAdmin;
     @UiField TextBox newUserName;
     @UiField PasswordTextBox newUserPassword;
     @UiField ListBox users;

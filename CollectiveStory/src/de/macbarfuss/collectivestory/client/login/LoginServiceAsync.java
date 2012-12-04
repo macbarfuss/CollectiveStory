@@ -1,4 +1,4 @@
-package de.macbarfuss.collectivestory.client;
+package de.macbarfuss.collectivestory.client.login;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
