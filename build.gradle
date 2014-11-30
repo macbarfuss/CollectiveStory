@@ -5,9 +5,6 @@ apply plugin: 'war'
 // project information
 version = '0.0.2'
 
-// configuration
-sourceCompatibility = 1.7
-
 // dependencies
 repositories {
     mavenLocal()
