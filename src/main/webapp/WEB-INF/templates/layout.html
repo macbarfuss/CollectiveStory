@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <div th:fragment="head">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" th:href="@{/home}">CollectiveStory</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li th:class="${controllerName} eq 'HomePage' ? 'active'"><a th:href="@{/home}">Home</a></li>
+                        <li sec:authorize="hasRole('ROLE_ADMIN')" th:class="${controllerName} eq 'AdminPage' ? 'active'"><a th:href="@{/admin}">Admin</a></li>
+                        <li th:class="${controllerName} eq 'DashboardPage' ? 'active'"><a th:href="@{/dashboard}">Dashboard</a></li>
+                        <li><a th:href="@{/projects}">Projekte</a></li>
+                        <li th:class="${controllerName} eq 'AboutPage' ? 'active'"><a th:href="@{/about}">Kontakt</a></li>
+                    </ul>
+                    <ul th:if="${#httpServletRequest.remoteUser != null}" class="nav navbar-nav navbar-right">
+                        <!-- user menu -->
+                        <li class="dropdown">
+                            <a th:href="@{#}" class="dropdown-toggle" data-toggle="dropdown" th:text="${#httpServletRequest.remoteUser}">sample_user</a>
+                            <ul class="dropdown-menu">
+                                <li><a th:href="@{/user/settings(username=${#httpServletRequest.remoteUser})}">Einstellungen</a></li>
+                                <li>
+                                    <form th:action="@{/logout}" method="post" class="navbar-form" role="form">
+                                        <button type="submit" class="btn btn-default">Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div th:unless="${#httpServletRequest.remoteUser != null}" class="navbar-right">
+                        <form class="navbar-form" role="form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Email" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" class="form-control" />
+                            </div>
+                            <button type="submit" class="btn btn-success">Sign in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:fragment="msgArea">
+        <div class="alert alert-danger" th:text="${errorMessage}" th:remove="${errorMessage == null} ? tag"></div>
+        <div class="alert alert-success" th:text="${successMessage}" th:remove="${successMessage == null} ? tag"></div>
+        <div class="alert alert-warning" th:text="${warnMessage}" th:remove="${warnMessage == null} ? tag"></div>
+        <div class="alert alert-info" th:text="${infoMessage}" th:remove="${infoMessage == null} ? tag"></div>
+    </div>
+
+    <div th:fragment="foot" class="container-fluid">
+        <footer>
+            <hr />
+            <div class="row-fluid">
+                <div class="col-md-12">
+                    <p>&copy; 2014, Matthias "MacBarfuss" Geörg</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

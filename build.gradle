@@ -1,31 +1,58 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'jetty'
+apply plugin: 'war'
 
-sourceCompatibility = 1.5
-version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
-    }
-}
+// project information
+version = '0.0.2'
 
+// configuration
+sourceCompatibility = 1.7
+
+// dependencies
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    // spring
+    compile "org.springframework:spring-context:4.1.+"
+    compile "org.springframework:spring-context-support:4.1.+"
+    compile "org.springframework:spring-web:4.1.+"
+    compile "org.springframework:spring-webmvc:4.1.+"
+    
+    // spring-security
+    compile "org.springframework.security:spring-security-web:3.2.+"
+    compile "org.springframework.security:spring-security-config:3.2.+"
+    
+    // database
+    compile "org.springframework.data:spring-data-mongodb:1.6.1.RELEASE"
+
+    // view
+    compile "org.thymeleaf:thymeleaf:2.1.+"
+    compile "org.thymeleaf:thymeleaf-spring4:2.1.+"
+    compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity3:2.1.+"
+
+    // general
+    compile "commons-collections:commons-collections:3.2"
+    compile "javax.mail:mail:1.4.7"
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile "org.apache.commons:commons-lang3:3.3.2"
+    compile "org.slf4j:slf4j-api:1.7.7"
+    
+    // testing
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
-test {
-    systemProperties 'property': 'value'
+// test deployment
+jettyRun {
+    httpPort = 8087
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
+// final deployment
+war {
+    baseName = 'collective-story'
+    manifest {
+        attributes 'Implementation-Title': 'Collective Story on Gradle', 'Implementation-Version': version
     }
 }

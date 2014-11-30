@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Matthias &quot;MacBarfuss&quot; Geörg" />
+
+<title>CollectiveStory</title>
+
+<!-- Styles -->
+<link th:replace="lib :: bootstrap-css" />
+<link th:replace="lib :: screen-css" />
+<link th:replace="lib :: bootstrap-theme" />
+
+<script th:replace="lib :: jquery"></script>
+<script th:replace="lib :: bootstrap-js"></script>
+
+<!-- TODO use the browserupdate JS to tell user about old browser version. -->
+</head>
+
+<body role="document">
+    <div th:include="layout :: head"></div>
+
+    <div class="container-fluid">
+        <div th:replace="layout :: msgArea"></div>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h1>Welcome</h1>
+                <p>Welcome to the home of CollectiveStory</p>
+
+                <p>
+                    <!--                 <a class="btn btn-primary btn-large" href="http://spring.io/">Learn more about -->
+                    <!--                     Spring</a> <a th:if="${basket.size &gt; 0}" class="btn btn-primary btn-large" -->
+                    <!--                     th:href="@{/showBasket}">Look in your basket</a> -->
+                </p>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span9">
+
+
+
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: foot"></div>
+</body>
+</html>

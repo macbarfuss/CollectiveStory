@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Matthias &quot;MacBarfuss&quot; Geörg" />
+
+<title>CollectiveStory</title>
+
+<!-- Styles -->
+<link th:replace="lib :: bootstrap-css" href="../../resources/css/bootstrap.css" rel="stylesheet" />
+<link th:replace="lib :: bootstrap-theme" href="../../resources/css/bootstrap-theme.css" rel="stylesheet" />
+<link th:replace="lib :: screen-css" href="../../resources/css/screen.css" rel="stylesheet" />
+
+<script th:replace="lib :: jquery" type="text/javascript" src="../../resources/jquery.min.js"></script>
+<script th:replace="lib :: bootstrap-js" type="text/javascript" src="../../resources/bootstrap.min.js"></script>
+
+<!-- TODO use the browserupdate JS to tell user about old browser version. -->
+</head>
+
+<body role="document">
+    <div th:include="layout :: head"></div>
+
+    <div class="container-fluid">
+        <div th:replace="layout :: msgArea"></div>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h1 th:text="#{usersettings.title}">User Settings</h1>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <form role="form" th:action="@{/usersettings}" th:object="${user}" th:method="post">
+                    <div class="form-group">
+                        <label for="username" th:text="#{user.username}">Username</label>
+                        <p class="form-control-static" th:text="*{username}">Example User</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" th:text="#{user.email}">Email</label>
+                        <input type="email" class="form-control"
+                                th:field="*{email}" th:placeholder="#{user.email}" placeholder="E-Mail" />
+                    </div>
+                    <div th:if="${@authenticationService.getCurrentUser().isAdmin()}" class="checkbox">
+                        <label>
+                            <input type="checkbox" th:field="*{enabled}" th:text="#{user.enabled}">This user is activated.</input>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success" name="save" th:text="#{usersettings.save.action}">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: foot"></div>
+</body>
+</html>

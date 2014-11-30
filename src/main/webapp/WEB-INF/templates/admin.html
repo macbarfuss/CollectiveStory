@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Matthias &quot;MacBarfuss&quot; Geörg" />
+
+<title>CollectiveStory</title>
+
+<!-- Styles -->
+<link th:replace="lib :: bootstrap-css" />
+<link th:replace="lib :: screen-css" />
+<link th:replace="lib :: bootstrap-theme" />
+
+<script th:replace="lib :: jquery"></script>
+<script th:replace="lib :: bootstrap-js"></script>
+
+<!-- TODO use the browserupdate JS to tell user about old browser version. -->
+</head>
+
+<body role="document">
+    <div th:include="layout :: head"></div>
+
+    <div class="container-fluid">
+        <div th:replace="layout :: msgArea"></div>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h1 th:text="#{admin.title}">Administration</h1>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" th:action="@{/admin}" th:object="${newUser}" th:method="post">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label" th:text="#{user.username}">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{username}" th:placeholder="#{user.username}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label" th:text="#{user.email}">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" th:field="*{email}" th:placeholder="#{user.email}" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" name="addUser" th:text="#{user.add}">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <div th:unless="${#lists.isEmpty(users)}">
+
+                    <h2 th:text="#{userlist.title}">List of Users</h2>
+
+                    <form th:action="@{/admin}" th:method="post">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th th:text="#{user.username}">Username</th>
+                                    <th th:text="#{user.email}">E-Mail</th>
+                                    <th th:text="#{user.enabled}">enabled</th>
+                                    <th th:text="#{user.delete}">delete</th>
+                                    <th th:text="#{user.resetPassword}">reset password</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="u : ${users}">
+                                    <td th:text="${u.username}">MacBarfuss</td>
+                                    <td th:text="${u.email}">mail@macbarfuss.de</td>
+                                    <td th:text="${u.enabled}? #{bool.true} : #{bool.false}">yes</td>
+                                    <td><button name="deleteUser" type="submit" th:value="${u.username}"
+                                            class="btn btn-danger" th:text="#{user.delete.action}">Delete</button></td>
+                                    <td><button name="resetPassword" type="submit" th:value="${u.username}"
+                                            class="btn btn-danger" th:text="#{user.resetPassword.action}">Set</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <form th:action="@{/admin}" th:method="post">
+                    <div class="form-group">
+                        <label for="submitTestMail" class="col-sm-2 control-label" th:text="#{admin.testMail.label}">Send Test Mail:</label>
+                        <div class="col-sm-10">
+                            <button type="submit" id="submitTestMail" class="btn btn-danger" name="testMail" th:text="#{admin.testMail.action}">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: foot"></div>
+</body>
+</html>
