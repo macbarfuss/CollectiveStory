@@ -1,4 +1,0 @@
-eclipse.preferences.version=1
-jarsExcludedFromWebInfLib=/opt/mongo-2.8.0.jar|/opt/morphia-0.99.jar|/opt/morphia-gwt-0.99-SNAPSHOT.jar
-warSrcDir=war
-warSrcDirIsOutput=true
