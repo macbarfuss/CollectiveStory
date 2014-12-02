@@ -20,9 +20,7 @@ import de.macbarfuss.collectivestory.service.UserDtoService;
 
 @Controller
 @RequestMapping("/admin")
-// @PreAuthorize("hasRole('ADMIN')")
 @Secured("ROLE_ADMIN")
-// @RolesAllowed("ADMIN")
 public class AdminPage extends AbstractPage {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdminPage.class);
