@@ -19,7 +19,7 @@
                         <li th:class="${controllerName} eq 'HomePage' ? 'active'"><a th:href="@{/home}">Home</a></li>
                         <li sec:authorize="hasRole('ROLE_ADMIN')" th:class="${controllerName} eq 'AdminPage' ? 'active'"><a th:href="@{/admin}">Admin</a></li>
                         <li th:class="${controllerName} eq 'DashboardPage' ? 'active'"><a th:href="@{/dashboard}">Dashboard</a></li>
-                        <li><a th:href="@{/projects}">Projekte</a></li>
+                        <li th:class="${controllerName} eq 'StoriesPage' ? 'active'"><a th:href="@{/story/all}">Stories</a></li>
                         <li th:class="${controllerName} eq 'AboutPage' ? 'active'"><a th:href="@{/about}">Kontakt</a></li>
                     </ul>
                     <ul th:if="${#httpServletRequest.remoteUser != null}" class="nav navbar-nav navbar-right">
